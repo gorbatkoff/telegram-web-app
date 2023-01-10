@@ -6,16 +6,16 @@ import { useTelegram } from '../../hooks/useTelegram';
 
 function Header() {
 
-    const {user, onClose} = useTelegram()
+    const { user, onClose } = useTelegram();
 
     return (
         <div className={styles.header}>
             <Button onClick={onClose}>Закрыть</Button>
-            <span>
+            <span className={styles.username}>
                 {user?.username}
             </span>
         </div>
-    )
+    );
 }
 
 export default Header
