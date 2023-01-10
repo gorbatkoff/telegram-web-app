@@ -15,16 +15,15 @@ const products = [
     { id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая' },
 ]
 
-function getTotalPrice(items) {
+const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
-        return acc + item.price
+        return acc += item.price
     }, 0)
 }
 
-function ProductList() {
-
+const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
-    const { tg, queryId} = useTelegram();
+    const {tg, queryId} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
@@ -32,10 +31,9 @@ function ProductList() {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-
-        fetch('http://62.217.180.68:8000/web-data', {
-            method: "POST",
-            headers:{
+        fetch('http://85.119.146.179:8000/web-data', {
+            method: 'POST',
+            headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
@@ -50,32 +48,26 @@ function ProductList() {
     }, [onSendData])
 
     const onAdd = (product) => {
-
         const alreadyAdded = addedItems.find(item => item.id === product.id);
-
         let newItems = [];
 
-        if (alreadyAdded) {
+        if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
+        } else {
+            newItems = [...addedItems, product];
         }
 
-        else {
-            newItems = [...addedItems, product]
-        }
+        setAddedItems(newItems)
 
-        setAddedItems(newItems);
-
-        if (newItems.length === 0) {
+        if(newItems.length === 0) {
             tg.MainButton.hide();
-        }
-        else {
+        } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(newItems)}`
-            });
+            })
         }
     }
-
     return (
         <div className={styles.list}>
             {products.map(product => (
