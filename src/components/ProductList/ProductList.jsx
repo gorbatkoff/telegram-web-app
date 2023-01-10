@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 
 import styles from './ProductList.module.css';
