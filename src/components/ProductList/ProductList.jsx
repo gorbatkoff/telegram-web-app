@@ -33,7 +33,7 @@ function ProductList() {
             queryId,
         }
 
-        fetch('https://localhost:8000', {
+        fetch('http://62.217.180.68:8000', {
             method: "POST",
             headers:{
                 'Content-Type': 'application/json',
