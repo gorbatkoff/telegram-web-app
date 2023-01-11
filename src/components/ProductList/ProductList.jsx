@@ -1,24 +1,53 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {useState} from 'react';
+import './ProductList.module.css';
+import ProductItem from "../ProductItem/ProductItem";
+import {useTelegram} from "../../hooks/useTelegram";
+import {useCallback, useEffect} from "react";
 
-import { useTelegram } from './../../hooks/useTelegram';
+const products = [
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
+    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
+    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
+    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
+    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
+]
 
-import styles from './Form.module.css';
+const getTotalPrice = (items = []) => {
+    return items.reduce((acc, item) => {
+        return acc += item.price
+    }, 0)
+}
 
-function Form() {
+const ProductList = () => {
+    const [addedItems, setAddedItems] = useState([]);
+    const {tg, queryId} = useTelegram();
 
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
-    const [subject, setSubject] = useState('physical');
-    const { tg } = useTelegram();
+    // const onSendData = useCallback(() => {
+    //     const data = {
+    //         products: addedItems,
+    //         totalPrice: getTotalPrice(addedItems),
+    //         queryId,
+    //     }
+    //     fetch('http://62.217.180.68:8000/web-data', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    // }, [addedItems])
 
-    const onSendData = useCallback(() => {
+    const onSendData = () => {
         const data = {
-            country,
-            street,
-            subject
+            subject: "123",
+            temp: "123",
         }
+        
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject])
+    }
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -27,51 +56,39 @@ function Form() {
         }
     }, [onSendData])
 
-    useEffect(() => {
-        tg.MainButton.setParams({
-            text: 'Отправить данные'
-        })
-    }, [])
+    const onAdd = (product) => {
+        const alreadyAdded = addedItems.find(item => item.id === product.id);
+        let newItems = [];
 
-    useEffect(() => {
-        if (!street || !country) {
+        if(alreadyAdded) {
+            newItems = addedItems.filter(item => item.id !== product.id);
+        } else {
+            newItems = [...addedItems, product];
+        }
+
+        setAddedItems(newItems)
+
+        if(newItems.length === 0) {
             tg.MainButton.hide();
-        }
-
-        else {
+        } else {
             tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `Купить ${getTotalPrice(newItems)}`
+            })
         }
-    }, [country, street])
-
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value);
-    }
-
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value);
-    }
-
-    const onChangeSubject = (e) => {
-        setSubject(e.target.value);
     }
 
     return (
-        <div className={styles.form}>
-            <h3>Введите ваши данные</h3>
-
-            <input className={styles.input} type="text" placeholder="Страна"
-                value={country} onChange={onChangeCountry} />
-
-            <input className={styles.input} type="text" placeholder="Улица"
-                value={street} onChange={onChangeStreet} />
-
-            <select value={subject} onChange={onChangeSubject}
-                className={styles.select}>
-                <option value="physical" >Физ. Лицо</option>
-                <option value="legal" >Юр. Лицо</option>
-            </select>
+        <div className={'list'}>
+            {products.map(item => (
+                <ProductItem
+                    product={item}
+                    onAdd={onAdd}
+                    className={'item'}
+                />
+            ))}
         </div>
-    )
-}
+    );
+};
 
-export default Form
+export default ProductList;
