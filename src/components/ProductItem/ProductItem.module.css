@@ -1,4 +1,4 @@
-.product{
+.product {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--tg-theme-button-color);
@@ -6,7 +6,7 @@
     width: 170px;
 }
 
-.img{
+.img {
     width: 100%;
     background: lightcyan;
     height: 100px;
@@ -14,10 +14,18 @@
     background: var(--tg-theme-button-color);
 }
 
-.description{
+.price {
+    padding: 3.23259px 8.62025px;
+    gap: 3.23px;
+    background: #FFCB45;
+    border-radius: 5.38766px;
+    font-size: 18px;
+}
+
+.description {
     font-size: 0.8em;
 }
 
-.add-btn{
+.add-btn {
     width: 100%;
 }

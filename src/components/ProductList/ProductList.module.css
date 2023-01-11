@@ -8,3 +8,18 @@
     margin-right: 10px;
     margin-bottom: 10px;
 }
+
+.generate {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #2F80ED;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.balance{
+    width: fit-content;
+    margin: 0 auto;
+}

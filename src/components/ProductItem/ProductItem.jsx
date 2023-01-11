@@ -15,15 +15,14 @@ function ProductItem({ product, className, onAdd }) {
 
             <div className={styles.title}>{product.title}</div>
 
-            <div className={styles.description}>{product.description}</div>
-
-            <div className={styles.price}>
-                <span>Стоимость: <b>{product.price}</b></span>
-            </div>
+            {/* <div className={styles.description}>{product.description}</div> */}
 
             <Button className={styles['add-btn']}
                 onClick={onAddHandler}
-            >Добавить в корзину</Button>
+            >
+                <div className={styles.price}>
+                    <span><b>{product.price}</b></span>
+                </div></Button>
         </div>
     )
 }
