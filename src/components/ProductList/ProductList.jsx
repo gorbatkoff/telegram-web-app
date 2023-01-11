@@ -42,9 +42,10 @@ const ProductList = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
+            subject: "123",
+            temp: "123",
         }
+        
         tg.sendData(JSON.stringify(data));
     }, [addedItems])
 
