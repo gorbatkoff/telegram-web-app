@@ -21,13 +21,13 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
-    const { tg, queryId } = useTelegram();
+    const {tg, queryId} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
-            queryId: queryId,
+            queryId,
         }
         fetch('http://62.217.180.68:8000/web-data', {
             method: 'POST',
@@ -49,7 +49,7 @@ const ProductList = () => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
-        if (alreadyAdded) {
+        if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
@@ -57,7 +57,7 @@ const ProductList = () => {
 
         setAddedItems(newItems)
 
-        if (newItems.length === 0) {
+        if(newItems.length === 0) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
@@ -66,6 +66,7 @@ const ProductList = () => {
             })
         }
     }
+
     return (
         <div>
             <div className={styles.generate}>
