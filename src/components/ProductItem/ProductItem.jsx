@@ -17,12 +17,12 @@ function ProductItem({ product, className, onAdd }) {
 
             {/* <div className={styles.description}>{product.description}</div> */}
 
-            <Button className={styles['add-btn']}
+            <button className={styles['add-btn']}
                 onClick={onAddHandler}
             >
                 <div className={styles.price}>
                     <span><b>{product.price}</b></span>
-                </div></Button>
+                </div></button>
         </div>
     )
 }
