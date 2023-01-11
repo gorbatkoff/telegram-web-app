@@ -25,29 +25,22 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
-    // const onSendData = useCallback(() => {
-    //     const data = {
-    //         products: addedItems,
-    //         totalPrice: getTotalPrice(addedItems),
-    //         queryId,
-    //     }
-    //     fetch('http://62.217.180.68:8000/web-data', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    // }, [addedItems])
-
-    const onSendData = () => {
+    const onSendData = useCallback(() => {
         const data = {
-            subject: "123",
-            temp: "123",
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+            queryId,
         }
-        
-        tg.sendData(JSON.stringify(data));
-    }
+        fetch('http://62.217.180.68:8000/web-data', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems])
+
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
