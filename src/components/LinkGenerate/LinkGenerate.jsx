@@ -18,7 +18,7 @@ function LinkGenerate() {
 
                 :
 
-                <h2><a href="https://t.me/happy_subs">t.me/happy_subs</a></h2>
+                <a className={styles.link} href="https://t.me/happy_subs">t.me/happy_subs</a>
             }
         </div>
     )
