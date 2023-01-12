@@ -32,7 +32,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId: tg.initDataUnsafe?.query_id,
         }
-        fetch('http://62.217.180.68:8000/web-data', {
+        fetch('http://62.217.180.68:80/web-data', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
