@@ -4,6 +4,13 @@
     /* border: 1px solid var(--tg-theme-button-color); */
     padding: 15px;
     width: 170px;
+    position: relative;
+}
+
+.hot{
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .img {
@@ -42,4 +49,5 @@
     font-size: 18px;
     border: none;
     font-weight: bold;
+    
 }
