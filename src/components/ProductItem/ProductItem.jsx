@@ -3,6 +3,8 @@ import Button from '../Button/Button';
 
 import styles from './ProductItem.module.css';
 
+import PersonIcon from '../../images/PersonIcon.svg';
+
 function ProductItem({ product, className, onAdd }) {
 
     const onAddHandler = () => {
@@ -12,17 +14,19 @@ function ProductItem({ product, className, onAdd }) {
     return (
         <div className={styles.product + " " + className}>
             <div className={styles.img}>
-                <img src={product.imgLink} alt="" height="100"/>
+                <img src={product.imgLink} alt="" height="100%" width="100%" />
             </div>
 
-            <div className={styles.title}>{product.title}</div>
-
+            <div className={styles.title}>
+                {product.title}
+            </div>
 
             <button className={styles['add-btn']}
                 onClick={onAddHandler}
             >
                 <div className={styles.price}>
-                    <span><b>{product.price}</b></span>
+                    <img src={PersonIcon} alt="" />
+                    <span>{product.price}</span>
                 </div></button>
         </div>
     )

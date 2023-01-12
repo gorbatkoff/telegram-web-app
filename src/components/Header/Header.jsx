@@ -10,10 +10,9 @@ function Header() {
 
     return (
         <div className={styles.header}>
-            {/* <Button onClick={onClose}>Закрыть</Button> */}
-            <span className={styles.username}>
-                {user?.username}
-            </span>
+            <h3><b>The Edinorog</b></h3>
+
+            <Button>Сменить</Button>
         </div>
     );
 }
