@@ -11,11 +11,12 @@ function ProductItem({ product, className, onAdd }) {
 
     return (
         <div className={styles.product + " " + className}>
-            <div className={styles.img}></div>
+            <div className={styles.img}>
+                <img src={product.imgLink} alt="" height="100"/>
+            </div>
 
             <div className={styles.title}>{product.title}</div>
 
-            {/* <div className={styles.description}>{product.description}</div> */}
 
             <button className={styles['add-btn']}
                 onClick={onAddHandler}
