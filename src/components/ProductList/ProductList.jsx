@@ -72,7 +72,7 @@ const ProductList = () => {
     }
 
     return (
-        <div className={'list'}>
+        <div className={styles.list}>
             {products.map(item => (
                 <ProductItem
                     product={item}
