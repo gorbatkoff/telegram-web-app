@@ -5,6 +5,8 @@ import { useCallback, useEffect } from "react";
 
 import styles from './ProductList.module.css';
 import LinkGenerate from '../LinkGenerate/LinkGenerate';
+import Header from '../Header/Header';
+import UserBalance from '../UserBalance/UserBalance';
 
 const products = [
     { id: '1', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 5000, description: 'Синего цвета, прямые' },
@@ -75,7 +77,9 @@ const ProductList = () => {
 
     return (
         <React.Fragment>
+            <Header />
             <LinkGenerate />
+            <UserBalance />
 
             <div className={styles.list}>
                 {products.map(item => (

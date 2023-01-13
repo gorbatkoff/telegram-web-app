@@ -18,8 +18,6 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
-            <UserBalance />
             <Routes>
                 <Route index element={<ProductList />}/>
                 <Route path={'/products/:channel/:id'} element={<ProductPage />}/>

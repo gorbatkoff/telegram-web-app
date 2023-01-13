@@ -1,10 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import StepperComponent from '../Stepper/StepperComponent';
+import UserBalance from '../UserBalance/UserBalance';
 
 import Hot from '../../images/HotProduct.svg';
 
 import styles from './ProductPage.module.css'
+import { Button } from '@mui/material';
 
 function ProductPage() {
 
@@ -25,6 +27,10 @@ function ProductPage() {
 
     return (
         <div>
+            <Button onClick={() => window.location.href = '/'}></Button>
+
+            <UserBalance />
+
             <div className={styles.product}>
                 <div className={styles.img}>
                     <img src={products[id].imgLink} alt="" height="100%" width="100%" />
