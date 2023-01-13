@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 function ProductPage() {
 
+    let channel = useParams().channel;
     let id = useParams().id;
 
     return (

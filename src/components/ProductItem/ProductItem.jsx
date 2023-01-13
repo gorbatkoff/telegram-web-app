@@ -15,7 +15,7 @@ function ProductItem({ product, className, onAdd }) {
     }
 
     return (
-        <Link to={`/products/${product.id}`}>
+        <Link to={`/products/782536182/${product.id}`}>
 
             <div className={styles.product + " " + className}>
                 <div className={styles.img}>

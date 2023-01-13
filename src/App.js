@@ -23,7 +23,7 @@ function App() {
             <UserBalance />
             <Routes>
                 <Route index element={<ProductList />}/>
-                <Route path={'/products/:id'} element={<ProductPage />}/>
+                <Route path={'/products/:channel/:id'} element={<ProductPage />}/>
                 <Route path={'/form'} element={<Form />}/>
             </Routes>
         </div>
