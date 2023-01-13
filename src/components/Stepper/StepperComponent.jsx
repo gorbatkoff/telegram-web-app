@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -7,40 +7,65 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import { grid } from '@mui/system';
 
-const sizes = ['XXXL', 'XXL', 'XL', 'L', 'M', 'S', 'XS'];
 
-const renderSizes = () => {
-  return sizes.map((size, i) => {
-    return <button style={{
-      padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
-    }} key={i}>{size}</button>
-  })
-}
-
-const steps = [
-  {
-    label: 'Выберите размер',
-    description: <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between', gridGap: '10px' }}>
-      {renderSizes()}
-    </div>
-  },
-  {
-    label: 'Укажите ваш пол',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
-  },
-  {
-    label: 'Подтвердите ваш выбор',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
 
 export default function StepperComponent() {
+  const sizes = ['XXXL', 'XXL', 'XL', 'L', 'M', 'S', 'XS'];
+  const [size, setSize] = useState('M');
+
+  const genders = ['Мужской', 'Женский'];
+  const [gender, setGender] = useState('Мужской');
+
+
+  
+  const renderSizeButtons = () => {
+    return sizes.map((size, i) => {
+      return <button 
+      onClick={() => setSize(size)}
+      style={{
+        padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
+      }} key={i}>{size}</button>
+    })
+  }
+  
+  const renderGenderButtons = () => {
+    return genders.map((gender, i) => {
+      return <button 
+      onClick={() => setGender(gender)}
+      style={{
+        padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
+      }} key={i}>{gender}</button>
+    })
+  }
+  
+  const steps = [
+    {
+      label: 'Выберите размер',
+      description: <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between', gridGap: '10px' }}>
+        {renderSizeButtons()}
+      </div>
+    },
+    {
+      label: 'Укажите ваш пол',
+      description: <div style={{ display: 'flex', justifyContent: 'space-evenly', gridGap: '10px' }}>
+        {renderGenderButtons()}
+      </div>
+    },
+    {
+      label: 'Подтвердите ваш выбор',
+      description: <div>
+        <div>{size}</div>
+        <div>{gender}</div> 
+      </div>,
+    },
+  ];
+
+
+
+
+
+
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = steps.length;
