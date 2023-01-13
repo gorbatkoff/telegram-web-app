@@ -43,7 +43,7 @@ export default function StepperComponent() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1, textAlign: 'center', backgroundColor: 'var(--tg-theme-bg-color)' }}>
+    <Box sx={{ maxWidth: 400, flexGrow: 1, textAlign: 'center', backgroundColor: 'var(--tg-theme-bg-color)', color: 'var(--tg-theme-text-color)' }}>
       <MobileStepper
         variant="text"
         steps={maxSteps}
