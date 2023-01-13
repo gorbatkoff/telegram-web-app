@@ -6,7 +6,7 @@ import UserBalance from '../UserBalance/UserBalance';
 import Hot from '../../images/HotProduct.svg';
 
 import styles from './ProductPage.module.css'
-import { Button } from '@mui/material';
+import Button from '../Button/Button';
 
 function ProductPage() {
 
@@ -27,7 +27,8 @@ function ProductPage() {
 
     return (
         <div>
-            <Button onClick={() => window.location.href = '/'}></Button>
+
+            <Button onClick={() => window.location.href = '/'}>Отменить</Button>
 
             <UserBalance />
 
