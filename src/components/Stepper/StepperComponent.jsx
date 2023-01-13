@@ -14,7 +14,7 @@ const sizes = ['XXXL', 'XXL', 'XL', 'L', 'M', 'S', 'XS'];
 const renderSizes = () => {
   return sizes.map((size, i) => {
     return <button style={{
-      padding: '10px 21px', background: 'var(--tg-theme-text-color)', color: '#fff', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none'
+      padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none'
     }} key={i}>{size}</button>
   })
 }
@@ -22,7 +22,7 @@ const renderSizes = () => {
 const steps = [
   {
     label: 'Выберите размер',
-    description: <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between'}}>
+    description: <div style={{display: 'grid', background: '#DFE2E6', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between'}}>
       {renderSizes()}
     </div>
   },
