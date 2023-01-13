@@ -7,13 +7,24 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { grid } from '@mui/system';
+
+const sizes = ['XXXL', 'XXL', 'XL', 'L', 'M', 'S', 'XS'];
+
+const renderSizes = () => {
+  return sizes.map((size, i) => {
+    return <button style={{
+      padding: '10px 21px', background: 'var(--tg-theme-text-color)', color: '#fff', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none'
+    }} key={i}>{size}</button>
+  })
+}
 
 const steps = [
   {
     label: 'Выберите размер',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
+    description: <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between'}}>
+      {renderSizes()}
+    </div>
   },
   {
     label: 'Укажите ваш пол',
