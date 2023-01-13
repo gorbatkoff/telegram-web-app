@@ -14,7 +14,7 @@ const sizes = ['XXXL', 'XXL', 'XL', 'L', 'M', 'S', 'XS'];
 const renderSizes = () => {
   return sizes.map((size, i) => {
     return <button style={{
-      padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none'
+      padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
     }} key={i}>{size}</button>
   })
 }
@@ -22,7 +22,7 @@ const renderSizes = () => {
 const steps = [
   {
     label: 'Выберите размер',
-    description: <div style={{display: 'grid', background: '#DFE2E6', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between'}}>
+    description: <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 25%)', justifyContent: 'space-between', gridGap: '10px' }}>
       {renderSizes()}
     </div>
   },
@@ -56,7 +56,7 @@ export default function StepperComponent() {
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1, textAlign: 'center' }}>
       <MobileStepper
-        sx={{backgroundColor: 'var(--tg-theme-bg-color)', color: 'var(--tg-theme-text-color)'}}
+        sx={{ backgroundColor: 'var(--tg-theme-bg-color)', color: 'var(--tg-theme-text-color)' }}
         variant="text"
         steps={maxSteps}
         position="static"
