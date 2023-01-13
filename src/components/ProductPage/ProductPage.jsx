@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import StepperComponent from '../Stepper/StepperComponent';
 import UserBalance from '../UserBalance/UserBalance';
 
-import Hot from '../../images/hot.png';
+import Hot from '../../images/HotProduct.svg';
 import PersonIcon from '../../images/PersonIcon.svg';
 
 import styles from './ProductPage.module.css'
