@@ -84,7 +84,7 @@ export default function StepperComponent() {
           justifyContent: 'center',
           height: 50,
           pl: 2,
-          bgcolor: 'background.default',
+          bgcolor: "var(--tg-theme-bg-color)",
           color: 'black',
         }}
       >
