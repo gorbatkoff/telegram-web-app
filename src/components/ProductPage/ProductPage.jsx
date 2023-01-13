@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import StepperComponent from '../Stepper/StepperComponent';
 import UserBalance from '../UserBalance/UserBalance';
 
@@ -28,7 +28,9 @@ function ProductPage() {
     return (
         <div>
 
-            <Button onClick={() => window.location.href = '/'}>Отменить</Button>
+            <Link to={index}>
+                <Button>Отменить</Button>
+            </Link>
 
             <UserBalance />
 
