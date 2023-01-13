@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
-import LinkGenerate from './components/LinkGenerate/LinkGenerate';
 import UserBalance from './components/UserBalance/UserBalance';
 import ProductPage from './components/ProductPage/ProductPage';
 
@@ -19,7 +18,6 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <LinkGenerate />
             <UserBalance />
             <Routes>
                 <Route index element={<ProductList />}/>
