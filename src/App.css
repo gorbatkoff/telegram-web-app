@@ -12,5 +12,5 @@ body {
 
 a{
   text-decoration: none;
-  color: #000;
+  color: var(--tg-theme-text-color);
 }
