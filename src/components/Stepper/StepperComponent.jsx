@@ -53,7 +53,7 @@ export default function StepperComponent() {
           height: 50,
           pl: 2,
           bgcolor: 'background.default',
-          color: 'white'
+          color: 'black'
         }}
       >
         <Typography>{steps[activeStep].label}</Typography>
