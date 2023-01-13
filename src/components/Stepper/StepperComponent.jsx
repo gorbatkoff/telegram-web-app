@@ -34,7 +34,7 @@ export default function StepperComponent() {
       return <button 
       onClick={() => {setGender(gender); handleNext()}}
       style={{
-        padding: '10px 21px', background: '#FFCB45', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px', fontWeight: 'bold'
+        padding: '10px 21px', background: '#FFCB45', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
       }} key={i}>{gender}</button>
     })
   }
