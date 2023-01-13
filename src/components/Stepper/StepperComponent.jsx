@@ -22,7 +22,7 @@ export default function StepperComponent() {
   const renderSizeButtons = () => {
     return sizes.map((size, i) => {
       return <button 
-      onClick={() => setSize(size)}
+      onClick={() => {setSize(size); handleNext()}}
       style={{
         padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
       }} key={i}>{size}</button>
@@ -32,7 +32,7 @@ export default function StepperComponent() {
   const renderGenderButtons = () => {
     return genders.map((gender, i) => {
       return <button 
-      onClick={() => setGender(gender)}
+      onClick={() => {setGender(gender); handleNext()}}
       style={{
         padding: '10px 21px', background: '#fff', color: '#000', boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.25)', border: 'none', outline: 'none', borderRadius: '9px'
       }} key={i}>{gender}</button>
@@ -54,9 +54,15 @@ export default function StepperComponent() {
     },
     {
       label: 'Подтвердите ваш выбор',
-      description: <div>
-        <div>{size}</div>
-        <div>{gender}</div> 
+      description: <div style={{
+        fontSize: "16px",
+        lineHeight: "23px",
+        textAlign: "center",
+        letterSpacing: "-0.01em",
+        color: "#838383",
+      }}>
+        <div>Размер: {size}</div>
+        <div>{gender} вариант</div> 
       </div>,
     },
   ];
@@ -86,20 +92,7 @@ export default function StepperComponent() {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
+
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === 'rtl' ? (
