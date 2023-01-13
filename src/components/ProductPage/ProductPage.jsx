@@ -28,7 +28,7 @@ function ProductPage() {
     return (
         <div>
 
-            <Link to={index}>
+            <Link to="/">
                 <Button>Отменить</Button>
             </Link>
 
