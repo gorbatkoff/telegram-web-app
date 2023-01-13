@@ -2,6 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import StepperComponent from '../Stepper/StepperComponent';
 
+import Hot from '../../images/HotProduct.svg';
+
+import styles from './ProductPage.module.css'
+
 function ProductPage() {
 
     const products = [
@@ -17,11 +21,28 @@ function ProductPage() {
 
 
     let channel = useParams().channel;
-    let id = useParams().id;
+    let id = useParams().id - 1;
 
     return (
         <div>
-            <div align="center"><h4>{id}</h4></div>
+            <div className={styles.product}>
+                <div className={styles.img}>
+                    <img src={products[id].imgLink} alt="" height="100%" width="100%" />
+                    <img src={Hot} alt="" className={styles.hot} />
+                </div>
+
+                <div className={styles.title}>
+                    {products[id].title}
+                </div>
+
+                {/* <button className={styles['add-btn']}
+                    onClick={onAddHandler}
+                >
+                    <div className={styles.price}>
+                        <img src={PersonIcon} alt="" />
+                        <span>{products[id].price}</span>
+                    </div></button> */}
+            </div>
 
             <StepperComponent />
         </div>

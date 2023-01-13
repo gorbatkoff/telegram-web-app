@@ -43,24 +43,7 @@ export default function StepperComponent() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: 50,
-          pl: 2,
-          bgcolor: 'background.default',
-          color: 'black'
-        }}
-      >
-        <Typography>{steps[activeStep].label}</Typography>
-      </Paper>
-      <Box sx={{ height: 255, maxWidth: 400, width: '100%', p: 2 }}>
-        {steps[activeStep].description}
-      </Box>
+    <Box sx={{ maxWidth: 400, flexGrow: 1, textAlign: 'center' }}>
       <MobileStepper
         variant="text"
         steps={maxSteps}
@@ -91,6 +74,25 @@ export default function StepperComponent() {
           </Button>
         }
       />
+
+      <Paper
+        square
+        elevation={0}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          height: 50,
+          pl: 2,
+          bgcolor: 'background.default',
+          color: 'black'
+        }}
+      >
+        <Typography>{steps[activeStep].label}</Typography>
+      </Paper>
+      <Box sx={{ height: 255, maxWidth: 400, width: '100%', p: 2 }}>
+        {steps[activeStep].description}
+      </Box>
+
     </Box>
   );
 }
