@@ -15,7 +15,7 @@ function ProductItem({ product, className, onAdd }) {
     }
 
     return (
-        <Link to={`/products/${product.id}`}>
+        // <Link to={`/products/${product.id}`}>
 
             <div className={styles.product + " " + className}>
                 <div className={styles.img}>
@@ -35,7 +35,7 @@ function ProductItem({ product, className, onAdd }) {
                         <span>{product.price}</span>
                     </div></button>
             </div>
-        </Link>
+        // </Link>
     )
 }
 
