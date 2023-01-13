@@ -1,12 +1,14 @@
-.userBalance{
+.userBalance {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
 }
 
-.pointsIcon{
-    margin: 0 7px;
+.pointsIcon {
     background: #FFCB45;
     border-radius: 50%;
     padding: 6px;

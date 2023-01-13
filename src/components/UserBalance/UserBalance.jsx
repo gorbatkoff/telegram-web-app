@@ -14,7 +14,7 @@ function UserBalance() {
             </div>
 
             <div>
-                10
+                10 000
             </div>
         </div>
     )

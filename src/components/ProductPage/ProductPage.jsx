@@ -4,6 +4,7 @@ import StepperComponent from '../Stepper/StepperComponent';
 import UserBalance from '../UserBalance/UserBalance';
 
 import Hot from '../../images/HotProduct.svg';
+import PersonIcon from '../../images/PersonIcon.svg';
 
 import styles from './ProductPage.module.css'
 import Button from '../Button/Button';
@@ -44,13 +45,17 @@ function ProductPage() {
                     {products[id].title}
                 </div>
 
+                <div className={styles.price}>
+                    <div className={styles.pointsIcon}>
+                        <img src={PersonIcon} alt="" height="15" />
+                    </div>
+                    <span>{products[id].price.toLocaleString()}</span>
+                </div>
+
                 {/* <button className={styles['add-btn']}
                     onClick={onAddHandler}
                 >
-                    <div className={styles.price}>
-                        <img src={PersonIcon} alt="" />
-                        <span>{products[id].price}</span>
-                    </div></button> */}
+                    </button> */}
             </div>
 
             <StepperComponent />

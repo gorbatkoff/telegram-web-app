@@ -3,28 +3,35 @@
     flex-direction: column;
     /* border: 1px solid var(--tg-theme-button-color); */
     padding: 15px;
-    width: 170px;
+    height: 100%;
     position: relative;
     justify-content: center;
     margin: 0 auto;
 }
 
-.hot{
+.hot {
     position: absolute;
     left: 0;
     top: 0;
 }
 
 .img {
-    width: 100%;
+    width: 280px;
     background: lightcyan;
-    height: 100px;
+    height: 200px;
     margin: 0 auto;
     background: var(--tg-theme-button-color);
 }
 
-.title{
+.title {
     text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 19.93px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: -0.01em;
 }
 
 .description {
@@ -39,8 +46,18 @@
     padding: 3.23259px 8.62025px;
     gap: 3.23px;
     height: fit-content;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
+.pointsIcon{
+    margin: 0 7px;
+    background: #FFCB45;
+    border-radius: 50%;
+    padding: 6px;
+    display: flex;
+    align-items: flex-end;
+}
 .add-btn {
     width: fit-content;
     margin: 0 auto;
@@ -51,5 +68,5 @@
     font-size: 18px;
     border: none;
     font-weight: bold;
-    
+
 }
