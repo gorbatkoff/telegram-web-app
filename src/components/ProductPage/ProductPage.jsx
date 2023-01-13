@@ -5,6 +5,7 @@ import UserBalance from '../UserBalance/UserBalance';
 
 import Hot from '../../images/HotProduct.svg';
 import PersonIcon from '../../images/PersonIcon.svg';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import styles from './ProductPage.module.css'
 import Button from '../Button/Button';
@@ -30,7 +31,7 @@ function ProductPage() {
         <div>
 
             <Link to="/">
-                <Button>Отменить</Button>
+                <Button><ArrowBackIosIcon color="#3e7dfa" /></Button>
             </Link>
 
             <UserBalance />
