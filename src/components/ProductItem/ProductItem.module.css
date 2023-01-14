@@ -15,7 +15,7 @@
 
 .img {
     width: 100%;
-    background: lightcyan;
+    background: rgb(2, 255, 255);
     height: 100px;
     margin: 0 auto;
     background: var(--tg-theme-button-color);
@@ -23,7 +23,7 @@
 
 .title {
     text-align: center;
-    margin: 0.5em auto;
+    margin: 0.5em 0;
     width: fit-content;
     color: var(--tg-theme-text-color);
     font-weight: 400;
@@ -31,6 +31,7 @@
     line-height: 15px;
     text-align: center;
     letter-spacing: -0.01em;
+    min-height: 150px;
 
 }
 .description {
