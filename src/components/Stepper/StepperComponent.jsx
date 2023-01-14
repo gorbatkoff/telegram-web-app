@@ -122,7 +122,7 @@ export default function StepperComponent() {
           sx={{ color: 'var(--tg-theme-text-color', fontWeight: 'bold' }}
         >{steps[activeStep].label}</Typography>
       </Paper>
-      <Box sx={{ height: 255, maxWidth: 400, width: '100%', p: 2 }}>
+      <Box sx={{ height: "fit-content", maxWidth: 400, width: '100%', p: 2 }}>
         {steps[activeStep].description}
       </Box>
 
