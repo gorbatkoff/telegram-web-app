@@ -28,7 +28,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
-    height: 120%;
+    min-height: 100px;
 }
 .description {
     font-size: 0.8em;
