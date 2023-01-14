@@ -25,7 +25,7 @@
     text-align: center;
     margin: 0.5em auto;
     width: fit-content;
-    color: #000;
+    color: var(--tg-theme-text-color);
     font-weight: 400;
     font-size: 18px;
     line-height: 15px;
