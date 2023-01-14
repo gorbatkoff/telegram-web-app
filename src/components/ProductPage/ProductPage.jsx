@@ -31,7 +31,7 @@ function ProductPage() {
         <div>
 
             <Link to="/">
-                <Button><ArrowBackIosIcon color="#3e7dfa" /></Button>
+                <ArrowBackIosIcon color="#3e7dfa" />
             </Link>
 
             <UserBalance />
