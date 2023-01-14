@@ -91,7 +91,7 @@ export default function StepperComponent() {
         variant="text"
         steps={maxSteps}
         position="static"
-        activeStep={activeStep}
+        activeStep={activeStep + 5}
 
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
