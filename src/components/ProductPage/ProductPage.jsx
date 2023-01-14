@@ -30,7 +30,7 @@ function ProductPage() {
     return (
         <div>
 
-            <div className={styles['product-heact']}>
+            <div className={styles['product-header']}>
                 <Link to="/">
                     <ArrowBackIosIcon color="#3e7dfa" />
                 </Link>
