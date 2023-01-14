@@ -15,10 +15,9 @@
 
 .img {
     width: 100%;
-    background: rgb(2, 255, 255);
     height: 100px;
     margin: 0 auto;
-    background: var(--tg-theme-button-color);
+    border-radius: 8px;
 }
 
 .title {
@@ -31,7 +30,7 @@
     line-height: 15px;
     text-align: center;
     letter-spacing: -0.01em;
-    min-height: 150px;
+    min-height: 30%;
 
 }
 .description {
