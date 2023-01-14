@@ -30,11 +30,14 @@ function ProductPage() {
     return (
         <div>
 
-            <Link to="/">
-                <ArrowBackIosIcon color="#3e7dfa" />
-            </Link>
+            <div className={styles['product-heact']}>
+                <Link to="/">
+                    <ArrowBackIosIcon color="#3e7dfa" />
+                </Link>
 
-            <UserBalance />
+                <UserBalance />
+            </div>
+
 
             <div className={styles.product}>
                 <div className={styles.img}>

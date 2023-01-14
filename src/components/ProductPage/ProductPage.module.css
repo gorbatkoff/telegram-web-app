@@ -1,3 +1,9 @@
+.product-header{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
 .product {
     display: flex;
     flex-direction: column;
@@ -69,5 +75,4 @@
     font-size: 18px;
     border: none;
     font-weight: bold;
-
 }
