@@ -1,7 +1,7 @@
 .product-header{
     display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
+    justify-content: space-between;
+    padding: 10px 10px;
 }
 
 .product {
