@@ -25,9 +25,7 @@ function ProductItem({ product, className, onAdd }) {
                     {product.title}
                 </div>
 
-                <button className={styles['add-btn']}
-                    onClick={onAddHandler}
-                >
+                <button className={styles['add-btn']}>
                     <div className={styles.price}>
                         <img src={PersonIcon} alt="" />
                         <span>{product.price}</span>
