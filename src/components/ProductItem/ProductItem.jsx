@@ -10,9 +10,7 @@ import { Link } from 'react-router-dom';
 
 function ProductItem({ product, className, onAdd }) {
 
-    const onAddHandler = () => {
-        onAdd(product)
-    }
+
 
     return (
         <Link to={`/products/782536182/${product.id}`}>

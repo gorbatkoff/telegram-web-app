@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import StepperComponent from '../Stepper/StepperComponent';
 import UserBalance from '../UserBalance/UserBalance';
+
 
 import Hot from '../../images/HotProduct.svg';
 import PersonIcon from '../../images/PersonIcon.svg';
@@ -9,6 +10,8 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import styles from './ProductPage.module.css'
 import Button from '../Button/Button';
+
+import { useTelegram } from "../../hooks/useTelegram";
 
 function ProductPage() {
 
@@ -26,6 +29,55 @@ function ProductPage() {
 
     let channel = useParams().channel;
     let id = useParams().id - 1;
+
+    const [addedItems, setAddedItems] = useState([]);
+    const { tg, queryId } = useTelegram();
+
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+            queryId: tg.initDataUnsafe?.query_id,
+        }
+        fetch('https://webapp.tmk.click/web-data', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }, [addedItems])
+
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    const onAdd = (product) => {
+        const alreadyAdded = addedItems.find(item => item.id === product.id);
+        let newItems = [];
+
+        if (alreadyAdded) {
+            newItems = addedItems.filter(item => item.id !== product.id);
+        } else {
+            newItems = [...addedItems, product];
+        }
+
+        setAddedItems(newItems)
+
+        if (newItems.length === 0) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `Купить ${getTotalPrice(newItems)}`
+            })
+        }
+    }
 
     return (
         <div>
@@ -55,14 +107,9 @@ function ProductPage() {
                     </div>
                     <span>{products[id].price.toLocaleString()}</span>
                 </div>
-
-                {/* <button className={styles['add-btn']}
-                    onClick={onAddHandler}
-                >
-                    </button> */}
             </div>
 
-            <StepperComponent />
+            <StepperComponent product={products[id]} onAdd={onAdd} />
         </div>
     )
 }

@@ -10,15 +10,17 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 
 
-export default function StepperComponent() {
+export default function StepperComponent({product, onAdd}) {
   const sizes = ['XXXL', 'XXL', 'XL', 'L', 'M', 'S', 'XS'];
   const [size, setSize] = useState('M');
 
   const genders = ['Мужской', 'Женский'];
   const [gender, setGender] = useState('Мужской');
 
+  const onAddHandler = () => {
+    onAdd(product)
+}
 
-  
   const renderSizeButtons = () => {
     return sizes.map((size, i) => {
       return <button 
@@ -63,14 +65,11 @@ export default function StepperComponent() {
       }}>
         <div>Размер: {size}</div>
         <div>{gender} вариант</div> 
+
+        <button onClick={onAddHandler}>Hello</button>
       </div>,
     },
   ];
-
-
-
-
-
 
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
