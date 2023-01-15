@@ -18,11 +18,6 @@ const products = [
     { id: '8', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 12000, description: 'Зеленого цвета, теплая' },
 ]
 
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
-}
 
 const ProductList = () => {
  

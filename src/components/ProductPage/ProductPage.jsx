@@ -33,6 +33,12 @@ function ProductPage() {
     const [addedItems, setAddedItems] = useState([]);
     const { tg, queryId } = useTelegram();
 
+    const getTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => {
+            return acc += item.price
+        }, 0)
+    }
+
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
