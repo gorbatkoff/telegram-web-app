@@ -66,7 +66,7 @@ export default function StepperComponent({product, onAdd}) {
         <div>Размер: {size}</div>
         <div>{gender} вариант</div> 
 
-        <Button onClick={onAddHandler}>Согласен</Button>
+        <Button onClick={onAddHandler} variant="outlined">Согласен</Button>
       </div>,
     },
   ];
