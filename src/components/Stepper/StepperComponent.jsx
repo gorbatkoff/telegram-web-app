@@ -66,6 +66,8 @@ export default function StepperComponent({product, onAdd}) {
         <div>Размер: {size}</div>
         <div>{gender} вариант</div> 
 
+        {activeStep === maxSteps ? onAddHandler() : null}
+
         <Button onClick={onAddHandler}>Подтвердить</Button>
       </div>,
     },
