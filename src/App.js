@@ -17,6 +17,8 @@ function App() {
     useEffect(() => {
         tg.ready();
         tg.expand();
+        console.log(telegram);
+        console.log(telegram.initData);
         console.log(telegram.initData.hash);
         // getListOfItems().then(r => setListOfProducts(r))
     }, [])
