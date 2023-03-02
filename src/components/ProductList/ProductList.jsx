@@ -19,9 +19,8 @@ const products = [
 ]
 
 
-const ProductList = () => {
+const ProductList = ({items}) => {
  
-
     return (
         <React.Fragment>
             <Header />
@@ -29,7 +28,7 @@ const ProductList = () => {
             <UserBalance />
 
             <div className={styles.list}>
-                {products.map(item => (
+                {items.map(item => (
                     <ProductItem
                         product={item}
                         className={'item'}

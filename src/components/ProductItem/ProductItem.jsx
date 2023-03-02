@@ -10,14 +10,12 @@ import { Link } from 'react-router-dom';
 
 function ProductItem({ product, className, onAdd }) {
 
-
-
     return (
-        <Link to={`/products/782536182/${product.id}`}>
+        <Link to={`/products/782536182/2`}>
 
             <div className={styles.product + " " + className}>
                 <div className={styles.img}>
-                    <img src={product.imgLink} alt="" height="100%" width="100%" />
+                    <img src={product['preview_photo']} alt="" height="100%" width="100%" />
                     <img src={Hot} alt="" className={styles.hot} />
                 </div>
 
