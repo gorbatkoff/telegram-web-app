@@ -28,13 +28,17 @@ const ProductList = ({items}) => {
             <UserBalance />
 
             <div className={styles.list}>
-                {items.map(item => (
-                    <ProductItem
-                        key={item.uuid}
-                        product={item}
-                        className={'item'}
-                    />
-                ))}
+                {items && (
+                    <div>
+                        {items.map(item => (
+                            <ProductItem
+                                key={item.uuid}
+                                product={item}
+                                className={'item'}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </React.Fragment>
     );
