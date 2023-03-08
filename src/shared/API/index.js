@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const __API_URL__ = "https://test.botweb.io/";
+const __API_URL__ = "https://test.botweb.io";
 
 export const getListOfItems = async () => {
     try {

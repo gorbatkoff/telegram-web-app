@@ -37,11 +37,9 @@ function App() {
     useEffect(() => {
         tg.ready();
         tg.expand();
-        console.log(telegram);
         console.log(telegram.initData);
-        console.log(telegram.initData.hash);
         getListOfItems().then(r => setListOfProducts(r))
-        initUserAndChannel().then(r => console.log(r));
+        // initUserAndChannel().then(r => console.log(r));
     }, [])
 
     return (
