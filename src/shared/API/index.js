@@ -1,17 +1,14 @@
-
 import axios from "axios";
 
 const __API_URL__ = "http://45.130.43.98";
 
 export const getListOfItems = async () => {
     try {
-        const response = await axios.get(__API_URL__ + '/api/reward/list/', {headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-                    'eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MTY5NDA5LCJpY' +
-                    'XQiOjE2NzYwODMwMDksImp0aSI6Ijg2ZjcwMTU4NDJlNzRhOGZhNzJiYz' +
-                    'hkYTI0YmQ1OGM4IiwidXNlcl9pZCI6Mn0.2tAlAoJazmVV9MmrRn7QDZU' +
-                    'ZSgVkYhH32bFfsRRTc1M'
-            }});
+        const response = await axios.get(__API_URL__ + '/api/reward/list/', {
+            headers: {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzYzMTg4LCJpYXQiOjE2NzgyNzY3ODgsImp0aSI6Ijc4OWFjNjc4MjlmMjRjYTJiYTAyMGZjYmU5MDZhY2RhIiwidXNlcl9pZCI6Mn0.-ES37IVIEFN_o2c-FOfJCTUbp22TJwhAXVg-B_BlIMU'
+            }
+        });
 
         return response.data;
 

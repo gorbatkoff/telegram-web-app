@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, {useState, useEffect, useCallback} from 'react'
+import {Link, useParams} from 'react-router-dom'
 import StepperComponent from '../Stepper/StepperComponent';
 import UserBalance from '../UserBalance/UserBalance';
 
@@ -11,27 +11,97 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import styles from './ProductPage.module.css'
 import Button from '../Button/Button';
 
-import { useTelegram } from "../../hooks/useTelegram";
+import {useTelegram} from "../../hooks/useTelegram";
+import axios from "axios";
 
 function ProductPage() {
 
     const products = [
-        { id: '1', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 5000, description: 'Синего цвета, прямые' },
-        { id: '2', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Пин Kreator', price: 12000, description: 'Зеленого цвета, теплая' },
-        { id: '3', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Промокод La Moda', price: 5000, description: 'Синего цвета, прямые' },
-        { id: '4', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Звонок с криэйтором', price: 122, description: 'Зеленого цвета, теплая' },
-        { id: '5', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 5000, description: 'Синего цвета, прямые' },
-        { id: '6', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 600, description: 'Зеленого цвета, теплая' },
-        { id: '7', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 5500, description: 'Синего цвета, прямые' },
-        { id: '8', imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album", title: 'Худи с очень длинным названием', price: 12000, description: 'Зеленого цвета, теплая' },
+        {
+            id: '1',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Худи с очень длинным названием',
+            price: 5000,
+            description: 'Синего цвета, прямые'
+        },
+        {
+            id: '2',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Пин Kreator',
+            price: 12000,
+            description: 'Зеленого цвета, теплая'
+        },
+        {
+            id: '3',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Промокод La Moda',
+            price: 5000,
+            description: 'Синего цвета, прямые'
+        },
+        {
+            id: '4',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Звонок с криэйтором',
+            price: 122,
+            description: 'Зеленого цвета, теплая'
+        },
+        {
+            id: '5',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Худи с очень длинным названием',
+            price: 5000,
+            description: 'Синего цвета, прямые'
+        },
+        {
+            id: '6',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Худи с очень длинным названием',
+            price: 600,
+            description: 'Зеленого цвета, теплая'
+        },
+        {
+            id: '7',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Худи с очень длинным названием',
+            price: 5500,
+            description: 'Синего цвета, прямые'
+        },
+        {
+            id: '8',
+            imgLink: "https://sun9-15.userapi.com/impg/22l2-L_4criKlQoYT4s5o1-_tZ9ZHnekn44s2w/rkQdTq3bfmM.jpg?size=166x123&quality=95&sign=9a677ec1d7ce8439e29be5ff7f381b0d&type=album",
+            title: 'Худи с очень длинным названием',
+            price: 12000,
+            description: 'Зеленого цвета, теплая'
+        },
     ]
 
 
-    let channel = useParams().channel;
-    let id = useParams().id - 1;
+    // let channel = useParams().channel;
+    let id = useParams().id;
+
+    const [product, setProduct] = useState({});
+
+    const fetchDataAboutProductByID = async (id) => {
+        try {
+            const response = await axios.get(`http://45.130.43.98/api/reward/update/${id}/`, {
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzYzMTg4LCJpYXQiOjE2NzgyNzY3ODgsImp0aSI6Ijc4OWFjNjc4MjlmMjRjYTJiYTAyMGZjYmU5MDZhY2RhIiwidXNlcl9pZCI6Mn0.-ES37IVIEFN_o2c-FOfJCTUbp22TJwhAXVg-B_BlIMU"
+                }
+            });
+
+            console.log(response.data)
+            setProduct(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchDataAboutProductByID(id);
+    }, [])
 
     const [addedItems, setAddedItems] = useState([]);
-    const { tg, queryId } = useTelegram();
+    const {tg, queryId} = useTelegram();
 
     const getTotalPrice = (items = []) => {
         return items.reduce((acc, item) => {
@@ -90,32 +160,32 @@ function ProductPage() {
 
             <div className={styles['product-header']}>
                 <Link to="/">
-                    <ArrowBackIosIcon color="#3e7dfa" />
+                    <ArrowBackIosIcon color="#3e7dfa"/>
                 </Link>
 
-                <UserBalance />
+                <UserBalance/>
             </div>
 
 
             <div className={styles.product}>
                 <div className={styles.img}>
-                    <img src={products[id].imgLink} alt="" height="100%" width="100%" />
-                    <img src={Hot} alt="" className={styles.hot} />
+                    <img src={product['preview_photo']} alt="" height="100%" width="100%"/>
+                    <img src={Hot} alt="" className={styles.hot}/>
                 </div>
 
                 <div className={styles.title}>
-                    {products[id].title}
+                    {product.title}
                 </div>
 
                 <div className={styles.price}>
                     <div className={styles.pointsIcon}>
-                        <img src={PersonIcon} alt="" height="15" />
+                        <img src={PersonIcon} alt="" height="15"/>
                     </div>
-                    <span>{products[id].price.toLocaleString()}</span>
+                    <span>{product.price}</span>
                 </div>
             </div>
 
-            <StepperComponent product={products[id]} onAdd={onAdd} />
+            <StepperComponent product={products} onAdd={onAdd}/>
         </div>
     )
 }

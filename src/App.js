@@ -17,10 +17,10 @@ function App() {
     useEffect(() => {
         tg.ready();
         tg.expand();
-        console.log(telegram);
-        console.log(telegram.initData);
-        console.log(telegram.initData.hash);
-        // getListOfItems().then(r => setListOfProducts(r))
+        // console.log(telegram);
+        // console.log(telegram.initData);
+        // console.log(telegram.initData.hash);
+        getListOfItems().then(r => setListOfProducts(r))
     }, [])
 
     return (
@@ -28,7 +28,7 @@ function App() {
 
             <Routes>
                 <Route index element={<ProductList items={listOfProducts}/>}/>
-                <Route path={'/products/:channel/:id'} element={<ProductPage/>}/>
+                <Route path={'/products/channel/:id'} element={<ProductPage/>}/>
                 <Route path={'/form'} element={<Form/>}/>
             </Routes>
         </div>

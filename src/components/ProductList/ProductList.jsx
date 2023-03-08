@@ -30,6 +30,7 @@ const ProductList = ({items}) => {
             <div className={styles.list}>
                 {items.map(item => (
                     <ProductItem
+                        key={item.uuid}
                         product={item}
                         className={'item'}
                     />

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 function ProductItem({ product, className, onAdd }) {
 
     return (
-        <Link to={`/products/782536182/2`}>
+        <Link to={`/products/channel/${product.uuid}`}>
 
             <div className={styles.product + " " + className}>
                 <div className={styles.img}>
