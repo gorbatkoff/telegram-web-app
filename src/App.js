@@ -14,7 +14,7 @@ function App() {
 
     const initUserAndChannel = async () => {
         try {
-            const request = await axios.post('http://45.130.43.98/api/bot/user/', {
+            const request = await axios.post('https://test.botweb.io/api/bot/user/', {
                 body: {
                     "bot_id": 123123,
                     "bot_user": 321312,
